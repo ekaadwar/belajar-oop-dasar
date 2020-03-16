@@ -39,6 +39,10 @@
 			return $this->penerbit;
 		}
 
+		public function setHarga($harga){
+			$this->harga = $harga
+		}
+
 		public function getHarga(){
 			return $this->harga - ($this->harga * $this->diskon / 100);
 		}
