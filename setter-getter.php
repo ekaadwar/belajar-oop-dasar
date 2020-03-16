@@ -2,11 +2,9 @@
 	class Produk{
 		private	$judul,
 				$penulis,
-				$penerbit;
-				
-		protected $diskon = 0;
-
-		private $harga;
+				$penerbit,
+				$harga,
+				$diskon = 0;
 
 		public function __construct($judul="judul", $penulis="penulis", $penerbit="penerbit", $harga=0){
 			$this->judul = $judul;
@@ -39,8 +37,16 @@
 			return $this->penerbit;
 		}
 
+		public function setDiskon($diskon){
+			$this->diskon = $diskon;
+		}
+
+		public function getDiskon(){
+			return $this->diskon = $diskon;
+		}
+
 		public function setHarga($harga){
-			$this->harga = $harga
+			$this->harga = $harga;
 		}
 
 		public function getHarga(){
@@ -77,10 +83,6 @@
 		public function __construct($judul="judul", $penulis="penulis", $penerbit="penerbit", $harga=0, $waktuMain=0){
 			parent::__construct($judul, $penulis, $penerbit, $harga);
 			$this->waktuMain = $waktuMain;
-		}
-
-		public function setDiskon($diskon){
-			$this->diskon = $diskon;
 		}
 
 		public function getInfoProduk(){
