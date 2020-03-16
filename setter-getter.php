@@ -104,7 +104,7 @@
 	echo $produk2->getHarga();
 	echo "<hr>";
 
-	$produk1->setPenerbit("Penerbit Baru");
-	echo $produk1->getPenerbit();
+	$produk1->setPenulis("Eka Fajhari Adwar");
+	echo $produk1->getPenulis();
 
  ?>
