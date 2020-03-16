@@ -1,6 +1,6 @@
 <?php 
 	class Produk{
-		public	$judul,
+		private	$judul,
 				$penulis,
 				$penerbit;
 				
@@ -66,8 +66,10 @@
 	
 	echo "Dengan Overriding : <br>";
 	echo $produk1->getInfoProduk();
-	echo "<br>{$produk2->getInfoProduk()}";
+	echo "<br>";
+	echo $produk2->getInfoProduk();
 	echo "<hr>";
 
+	$produk2->setDiskon(50);
 	echo $produk2->getHarga();
  ?>
