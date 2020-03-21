@@ -102,23 +102,7 @@
 		}
 	}
 
-	class CetakInfoProduk{
-		public $daftarProduk = [];
-
-		public function tambahProduk(Produk $produk){
-			$this->daftarProduk[] = $produk; 
-		}
-
-		public function cetak(){			
-			$str = "DAFTAR PRODUK : <br>";
-
-			foreach($this->daftarProduk as $p){
-				$str .= "- {$p->getInfoProduk()} <br>";
-			}
-
-			return $str;
-		}
-	}
+	
 
 	$produk1 = new Komik("Naruto", "Masashi Kishimoto", "Shonen Jump", 30000, 100);
 	$produk2 = new Game("Resident Evil 6", "Sinji Mikami", "Capcom", 270000, 70); 		
