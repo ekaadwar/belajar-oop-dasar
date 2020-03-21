@@ -1,5 +1,11 @@
 <?php 
 
+require_once "App/Produk/InfoProduk.php";
+require_once "App/Produk/Produk.php";
+require_once "App/Produk/Komik.php";
+require_once "App/Produk/Game.php";
+require_once "App/Produk/CetakInfoProduk.php";
+
 $produk1 = new Komik("Naruto", "Masashi Kishimoto", "Shonen Jump", 30000, 100);
 $produk2 = new Game("Resident Evil 6", "Sinji Mikami", "Capcom", 270000, 70); 		
 
@@ -9,4 +15,3 @@ $cetakProduk->tambahProduk($produk2);
 echo $cetakProduk->cetak();
 
  ?>
-
