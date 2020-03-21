@@ -1,5 +1,5 @@
 <?php 
-	class Produk{
+	abstract class Produk{
 		private	$judul,
 				$penulis,
 				$penerbit,
@@ -57,7 +57,9 @@
 			return "$this->penulis, $this->penerbit";
 		}
 
-		public function getInfoProduk(){
+		abstract public function getInfoProduk();
+
+		public function getInfo(){
 			$str = "{$this->judul} | {$this->getLabel()} (Rp {$this->harga}) ";
 			return $str;
 		}
@@ -72,7 +74,7 @@
 		}
 
 		public function getInfoProduk(){
-			$str = "Komik : ". parent::getInfoProduk() ." - {$this->halaman} Halaman.";
+			$str = "Komik : ". $this->getInfo() ." - {$this->halaman} Halaman.";
 			return $str;
 		}
 	}
@@ -86,25 +88,35 @@
 		}
 
 		public function getInfoProduk(){
-			$str = "Games : ". parent::getInfoProduk() ." ~ {$this->waktuMain} Jam.";
+			$str = "Games : ". $this->getInfo() ." ~ {$this->waktuMain} Jam.";
+			return $str;
+		}
+	}
+
+	class CetakInfoProduk{
+		public $daftarProduk = [];
+
+		public function tambahProduk(Produk $produk){
+			$this->daftarProduk[] = $produk; 
+		}
+
+		public function cetak(){			
+			$str = "DAFTAR PRODUK : <br>";
+
+			foreach($this->daftarProduk as $p){
+				$str .= "- {$p->getInfoProduk()} <br>";
+			}
+
 			return $str;
 		}
 	}
 
 	$produk1 = new Komik("Naruto", "Masashi Kishimoto", "Shonen Jump", 30000, 100);
-	$produk2 = new Game("Resident Evil 6", "Sinji Mikami", "Capcom", 270000, 70);
-	
-	echo "Dengan Overriding : <br>";
-	echo $produk1->getInfoProduk();
-	echo "<br>";
-	echo $produk2->getInfoProduk();
-	echo "<hr>";
+	$produk2 = new Game("Resident Evil 6", "Sinji Mikami", "Capcom", 270000, 70); 		
 
-	$produk2->setDiskon(50);
-	echo $produk2->getHarga();
-	echo "<hr>";
-
-	$produk1->setPenulis("Eka Fajhari Adwar");
-	echo $produk1->getPenulis();
+	$cetakProduk = new CetakInfoProduk();
+	$cetakProduk->tambahProduk($produk1);
+	$cetakProduk->tambahProduk($produk2);
+	echo $cetakProduk->cetak();
 
  ?>
